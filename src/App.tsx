@@ -16,7 +16,6 @@ const App = () => {
             <li><a href="/home">Home</a></li>
             <li><a href="/sobre">Sobre</a></li>
             <li><a href="/dashboard">Dashboard</a></li>
-
           </ul>
         </nav>
         <Routes>

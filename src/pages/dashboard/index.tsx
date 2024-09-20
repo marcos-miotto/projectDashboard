@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import './dashboard.css';
+import './styles.css';
 
 interface Transacao {
     descricao: string;

@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import Home from "../../pages/home/home";
-import Sobre from "../../pages/sobre/sobre";
-import Dashboard from "../../pages/dashboard/dashboard";
-import Login from "../../pages/login/login";
+import Home from "../../pages/home";
+import Sobre from "../../pages/sobre";
+import Dashboard from "../../pages/dashboard";
+import Login from "../../pages/login";
 
 enum RouterPages {
     login = 'login',

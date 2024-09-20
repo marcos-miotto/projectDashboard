@@ -17,7 +17,7 @@ const Login = () => {
         <div className="login-container">
             <h2>Login</h2>
             <button className="buttonGoogle" onClick={handleGoogleLogin}>
-                Login com Google
+                Login com Google!
             </button>
             <form onSubmit={(e) => { e.preventDefault(); handleLogin(); }}>
                 <input type="email" placeholder="Email" />

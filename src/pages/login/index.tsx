@@ -22,7 +22,7 @@ const Login = () => {
                 <input type="email" placeholder="Email" className="input-field" />
                 <input type="password" placeholder="Senha" className="input-field" />
             </form>
-            <button type="submit" className="button-submit">Entrar</button>
+            <button type="submit" className="button-submit" onClick={handleGoogleLogin}>Entrar</button>
         </div>
     );
 };

@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useTransacoes } from '../../context/TransacoesContext';
-import { Transacao } from '../../context/transacao'; // Importando a interface
+import { Transacao } from '../../context/transacao';
 
 const Despesas = () => {
     const { transacoes, editarTransacao, removerTransacao } = useTransacoes();
@@ -36,26 +36,31 @@ const Despesas = () => {
             <h2>Despesas</h2>
             <ul>
                 {despesas.map((transacao, index) => (
-                    <li key={index}>
+                    <li key={index} className="transacao-item">
                         {editando === index ? (
                             <div>
                                 <input
                                     type="text"
                                     value={descricaoEdit}
                                     onChange={(e) => setDescricaoEdit(e.target.value)}
+                                    className="descricao-edit"
                                 />
                                 <input
                                     type="number"
                                     value={valorEdit}
                                     onChange={(e) => setValorEdit(e.target.value)}
+                                    className="valor-edit"
                                 />
-                                <button onClick={() => handleSalvarEdicao(index)}>Salvar</button>
+                                <button className="edit-button" onClick={() => handleSalvarEdicao(index)}>Salvar</button>
                             </div>
                         ) : (
                             <>
-                                {transacao.descricao} - R$ {transacao.valor}
-                                <button onClick={() => handleEditar(index, transacao)}>Editar</button>
-                                <button onClick={() => removerTransacao(getIndiceReal(index))}>Excluir</button>
+                                <span className="descricao">{transacao.descricao}</span>
+                                <span className="valor">R$ {transacao.valor.toFixed(2)}</span>
+                                <div className="botoes">
+                                    <button className="edit-button" onClick={() => handleEditar(index, transacao)}>Editar</button>
+                                    <button className="delete-button" onClick={() => removerTransacao(getIndiceReal(index))}>Excluir</button>
+                                </div>
                             </>
                         )}
                     </li>

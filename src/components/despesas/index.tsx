@@ -22,14 +22,22 @@ const Despesas = () => {
 
     const handleSalvarEdicao = (index: number) => {
         const indiceReal = getIndiceReal(index);
+        const valorNumerico = parseFloat(valorEdit);
+
+        if (valorNumerico < 0) {
+            alert('O valor não pode ser negativo!');
+            return;
+        }
+    
         const transacaoAtualizada: Transacao = {
             descricao: descricaoEdit,
-            valor: parseFloat(valorEdit),
-            tipo: 'despesa', // Garantir o tipo 'despesa' aqui
+            valor: valorNumerico,
+            tipo: 'despesa',
         };
         editarTransacao(indiceReal, transacaoAtualizada);
         setEditando(null);
     };
+    
 
     return (
         <div>

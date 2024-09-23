@@ -22,14 +22,22 @@ const Receitas = () => {
 
     const handleSalvarEdicao = (index: number) => {
         const indiceReal = getIndiceReal(index);
+        const valorNumerico = parseFloat(valorEdit);
+    
+        if (valorNumerico <= 0) {
+            alert('O valor deve ser maior que zero!');
+            return;
+        }
+    
         const transacaoAtualizada: Transacao = {
             descricao: descricaoEdit,
-            valor: parseFloat(valorEdit),
+            valor: valorNumerico,
             tipo: 'receita',
         };
         editarTransacao(indiceReal, transacaoAtualizada);
         setEditando(null);
     };
+    
 
     return (
         <div>

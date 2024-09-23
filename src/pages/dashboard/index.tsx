@@ -41,7 +41,6 @@ const Dashboard = () => {
         setTipo('');
     };
 
-    // Calculando os totais de receitas e despesas
     const totalReceitas = transacoes
         .filter(transacao => transacao.tipo === 'receita')
         .reduce((acc, transacao) => acc + transacao.valor, 0);

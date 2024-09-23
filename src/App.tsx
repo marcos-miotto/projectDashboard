@@ -1,11 +1,12 @@
-import React, { useEffect } from 'react';
-import { BrowserRouter as Router, Route, Routes, useNavigate } from 'react-router-dom';
+import { useEffect } from 'react';
+import { Route, BrowserRouter as Router, Routes, useNavigate } from 'react-router-dom';
 import './App.css';
-import Home from './pages/home';
-import Sobre from './pages/sobre';
-import Dashboard from './pages/dashboard';
-import Login from './pages/login';
 import Navbar from './components/navbar';
+import { TransacoesProvider } from './context/TransacoesContext';
+import Dashboard from './pages/dashboard';
+import Home from './pages/home';
+import Login from './pages/login';
+import Sobre from './pages/sobre';
 
 function RedirectToLogin() {
   const navigate = useNavigate();
@@ -18,8 +19,8 @@ function RedirectToLogin() {
 }
 
 function App() {
-  
   return (
+    <TransacoesProvider>
       <Router>
         <Navbar />
         <main>
@@ -32,6 +33,7 @@ function App() {
           </Routes>
         </main>
       </Router>
+    </TransacoesProvider>
   );
 }
 

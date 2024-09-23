@@ -1,18 +1,16 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
+import Despesas from '../../components/despesas/index';
+import Receitas from '../../components/receitas/index';
+import { useTransacoes } from '../../context/TransacoesContext';
 import './styles.css';
-
-interface Transacao {
-    descricao: string;
-    valor: number;
-    tipo: string;
-}
 
 const Dashboard = () => {
     const [descricao, setDescricao] = useState('');
     const [valor, setValor] = useState('');
     const [tipo, setTipo] = useState('');
-    const [transacoes, setTransacoes] = useState<Transacao[]>([]);
     const [erro, setErro] = useState('');
+
+    const { adicionarTransacao, total } = useTransacoes();
 
     const handleAdicionar = () => {
         if (!descricao || !tipo || !valor) {
@@ -20,8 +18,8 @@ const Dashboard = () => {
             return;
         }
         setErro('');
-        const novaTransacao: Transacao = { descricao, valor: parseFloat(valor), tipo };
-        setTransacoes([...transacoes, novaTransacao]);
+        const novaTransacao = { descricao, valor: parseFloat(valor), tipo: tipo as 'receita' | 'despesa' };
+        adicionarTransacao(novaTransacao);
         setDescricao('');
         setValor('');
         setTipo('');
@@ -71,15 +69,14 @@ const Dashboard = () => {
                 {erro && <p className="erro">{erro}</p>}
                 <button className='dashboard-button' onClick={handleAdicionar}>Adicionar</button>
             </div>
+
             <div className="transacoes">
-                <h2>Transações</h2>
-                <ul>
-                    {transacoes.map((transacao, index) => (
-                        <li key={index}>
-                            {transacao.descricao} - {transacao.tipo} - R$ {transacao.valor}
-                        </li>
-                    ))}
-                </ul>
+                <Receitas />
+                <Despesas />
+            </div>
+
+            <div className="total">
+                <h3>Total: R$ {total.toFixed(2)}</h3>
             </div>
         </div>
     );

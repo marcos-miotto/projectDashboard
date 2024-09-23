@@ -1,10 +1,20 @@
 .home-container {
-    text-align: center;
-    margin: 2rem;
-  }
-  
-  p {
-    font-size: 1.2rem;
-    color: #555;
-  }
-  
+  text-align: center;
+  margin: 5rem auto; /* Centraliza a margem */
+  padding: 2rem; /* Adiciona espaçamento interno */
+  background-color: #ffffff; /* Fundo branco */
+  border-radius: 10px; /* Bordas arredondadas */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Sombra sutil */
+  max-width: 600px; /* Limita a largura máxima */
+}
+
+h1 {
+  font-size: 2.5rem; /* Tamanho maior para o título */
+  color: #333; /* Cor do título */
+}
+
+p {
+  font-size: 1.2rem;
+  color: #555; /* Cor do texto */
+  line-height: 1.6; /* Espaçamento entre linhas */
+}

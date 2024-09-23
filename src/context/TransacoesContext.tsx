@@ -1,14 +1,11 @@
 import React, { createContext, useContext, useState } from 'react';
-
-interface Transacao {
-    descricao: string;
-    valor: number;
-    tipo: 'receita' | 'despesa';
-}
+import { Transacao } from '../context/transacao'; // Ajuste o caminho conforme necessário
 
 interface TransacoesContextData {
     transacoes: Transacao[];
     adicionarTransacao: (transacao: Transacao) => void;
+    editarTransacao: (index: number, transacaoAtualizada: Transacao) => void;
+    removerTransacao: (index: number) => void;
     total: number;
 }
 
@@ -29,12 +26,22 @@ export const TransacoesProvider: React.FC<{ children: React.ReactNode }> = ({ ch
         setTransacoes((prevTransacoes) => [...prevTransacoes, transacao]);
     };
 
+    const editarTransacao = (index: number, transacaoAtualizada: Transacao) => {
+        setTransacoes((prevTransacoes) =>
+            prevTransacoes.map((transacao, i) => (i === index ? transacaoAtualizada : transacao))
+        );
+    };
+
+    const removerTransacao = (index: number) => {
+        setTransacoes((prevTransacoes) => prevTransacoes.filter((_, i) => i !== index));
+    };
+
     const total = transacoes.reduce((acc, transacao) => {
         return transacao.tipo === 'receita' ? acc + transacao.valor : acc - transacao.valor;
     }, 0);
 
     return (
-        <TransacoesContext.Provider value={{ transacoes, adicionarTransacao, total }}>
+        <TransacoesContext.Provider value={{ transacoes, adicionarTransacao, editarTransacao, removerTransacao, total }}>
             {children}
         </TransacoesContext.Provider>
     );

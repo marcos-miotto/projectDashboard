@@ -16,21 +16,17 @@
 }
 
 .input-descricao {
-    width: 35%;
-    /* Reduzido para 35% */
+    width: 35%; /* Reduzido para 35% */
     padding: 0.5rem;
     border: 1px solid #ccc;
-    border-radius: 8px;
-    /* Bordas arredondadas */
+    border-radius: 8px; /* Bordas arredondadas */
 }
 
 .input-valor {
-    width: 15%;
-    /* Reduzido para 15% */
+    width: 15%; /* Reduzido para 15% */
     padding: 0.5rem;
     border: 1px solid #ccc;
-    border-radius: 8px;
-    /* Bordas arredondadas */
+    border-radius: 8px; /* Bordas arredondadas */
 }
 
 .radio-group {
@@ -56,12 +52,77 @@
     margin-bottom: 1rem;
 }
 
-.transacoes ul {
-    list-style-type: none;
+/* Novas classes para Receitas e Despesas */
+.transacoes-container {
+    display: flex; /* Usar flexbox para as colunas */
+    flex-wrap: wrap; /* Permitir que quebre a linha */
+    margin-top: 2rem; /* Espaço entre o formulário e a seção de transações */
 }
 
-.transacoes li {
-    margin: 0.5rem 0;
+.transacoes-col {
+    width: 48%; 
+    border: 1px solid #ccc; 
+    border-radius: 8px; 
+    padding: 1rem; 
+    display: grid; /* Usando grid para organizar as transações */
+    grid-template-columns: 1fr; /* Uma coluna para as transações */
+    max-height: 300px; /* Ajuste a altura conforme necessário */
+    overflow-y: auto; /* Adiciona scroll vertical */
+}
+
+.transacoes-col h2 {
+    text-align: center; /* Centralizar o título */
+}
+
+.transacoes-col ul {
+    display: block; /* Garante que a lista seja exibida como bloco */
+    list-style-type: none; /* Remove os marcadores da lista */
+    padding: 0; /* Remove padding padrão */
+}
+
+.transacoes-col li {
+    display: flex;
+    justify-content: space-between; /* Alinhamento entre descrição e valor */
+    align-items: center; /* Centraliza verticalmente */
+    margin: 0.5rem 0; /* Espaço entre os itens da lista */
     padding: 0.5rem;
-    border-bottom: 1px solid #ccc;
+    border-bottom: 1px solid #ccc; /* Linha de separação entre as transações */
+    width: 100%; /* Para garantir que a lista ocupe toda a largura */
+}
+
+.transacoes-col li span {
+    flex: 1; /* Faz a descrição ocupar o espaço disponível */
+    min-width: 0; /* Garante que o texto não transborde */
+}
+
+.transacoes-col li span:last-child {
+    text-align: right; /* Alinha o valor à direita */
+    white-space: nowrap; /* Impede a quebra de linha no valor */
+}
+
+/* Estilo para os botões de editar e excluir */
+.edit-button {
+    background-color: #007bff; /* Azul */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 0.3rem 0.5rem;
+    cursor: pointer;
+}
+
+.delete-button {
+    background-color: #dc3545; /* Vermelho */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 0.3rem 0.5rem;
+    cursor: pointer;
+}
+
+.edit-button:hover {
+    background-color: #0056b3; /* Azul escuro ao passar o mouse */
+}
+
+.delete-button:hover {
+    background-color: #c82333; /* Vermelho escuro ao passar o mouse */
 }
